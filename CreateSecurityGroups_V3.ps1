@@ -19,7 +19,7 @@ Requires administrative access to Azure AD and Exchange Online. The AzureAD and 
 SubjectData
 
 .EXAMPLE
-.\CreateSecurityGroups.ps1
+.\CreateSecurityGroups_V3.ps1
 Processes group data from input files and provisions Azure AD and mail-enabled security groups accordingly, exporting mapping reports and logging unmapped users.
 #>
 
