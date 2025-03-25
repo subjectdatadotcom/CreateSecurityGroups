@@ -172,10 +172,6 @@ else
 # Output a message for confirmation
 Write-Host "Prepared CSV has been created and saved to $preparedCsvPath"
 
-
-# Step 3: Create Security Groups in the Source tenant
-# Note: You will need the AzureAD or MSGraph module to interact with the Azure AD for creating security groups.
-
 # Connect to the Source tenant (you might need proper permissions for this)
 Connect-AzureAD
 
