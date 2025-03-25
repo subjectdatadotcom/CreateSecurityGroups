@@ -58,13 +58,13 @@ $newGroupsCsvPath = $ReportsPath + "Reports\created_new_groups.csv"
 $reportData = Import-Csv -Path $reportCsvPath
 $mappingsData = Import-Csv -Path $mappingsCsvPath
 
-# Create a dictionary for fast lookup of Trader emails from Teranet emails (case-insensitive)
+# Create a dictionary for fast lookup of Source emails from Target emails (case-insensitive)
 $mappingDict = @{}
 foreach ($mapping in $mappingsData) {
-    $mappingDict[$mapping.TraderEmail.ToLower()] = $mapping.AS24Email
+    $mappingDict[$mapping.SourceEmail.ToLower()] = $mapping.TargetEmail
 }
 
-# Step 2: Prepare the updated data for Trader tenant and write to a new file
+# Step 2: Prepare the updated data for Source tenant and write to a new file
 $preparedData = @()
 $newGroupsData = @()
 $unmappedUsers = @()  # Collect unmapped users for logging
@@ -75,7 +75,7 @@ foreach ($row in $reportData) {
   $unmappedOwners = @()
   $unmappedMembers = @()
     
-    # If OwnersCount > 0, replace Owners with Trader emails
+    # If OwnersCount > 0, replace Owners with Source emails
     if ($row.OwnersCount -gt 0 -and $null -ne $row.Owners -and $row.Owners.Trim() -ne "") {
         $owners = $row.Owners -split ";"
         $newOwners = ($owners | ForEach-Object {
@@ -93,7 +93,7 @@ foreach ($row in $reportData) {
         $newOwners = ""
     }
 
-    # If MembersCount > 0, replace Members with Trader emails
+    # If MembersCount > 0, replace Members with Source emails
     if ($row.MembersCount -gt 0 -and $null -ne $row.Members -and $row.Members.Trim() -ne "") {
         $members = $row.Members -split ";"
         $newMembers = ($members | ForEach-Object {
@@ -173,10 +173,10 @@ else
 Write-Host "Prepared CSV has been created and saved to $preparedCsvPath"
 
 
-# Step 3: Create Security Groups in the Trader tenant
+# Step 3: Create Security Groups in the Source tenant
 # Note: You will need the AzureAD or MSGraph module to interact with the Azure AD for creating security groups.
 
-# Connect to the Trader tenant (you might need proper permissions for this)
+# Connect to the Source tenant (you might need proper permissions for this)
 Connect-AzureAD
 
 # To Create Mail Enabled secuirty Groups
