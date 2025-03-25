@@ -1,0 +1,3 @@
+MembersCount,GroupGUID,Owners,GroupName,GroupType,Members,OwnersCount
+4,aa883004-cb48-4b56-a24d-4cb589dc245f,,spgroup1,Security Group,testuser3.cms@source.com; testuser01@source.com; testuser02@source.com; testuser03@source.com,0
+1,aa883004-cb48-4b56-a24d-4cb589dc245f,,mesg_spgroup1,Mail-enabled Security Group,testuser01@source.com,0
