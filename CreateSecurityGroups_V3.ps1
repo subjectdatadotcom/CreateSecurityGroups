@@ -61,7 +61,7 @@ $mappingsData = Import-Csv -Path $mappingsCsvPath
 # Create a dictionary for fast lookup of Trader emails from Teranet emails (case-insensitive)
 $mappingDict = @{}
 foreach ($mapping in $mappingsData) {
-    $mappingDict[$mapping.TeranetEmail.ToLower()] = $mapping.TraderEmail
+    $mappingDict[$mapping.TraderEmail.ToLower()] = $mapping.AS24Email
 }
 
 # Step 2: Prepare the updated data for Trader tenant and write to a new file
