@@ -68,7 +68,7 @@ Exchange Online admin permissions
 
 🛠️ How to Run
 
-.\CreateSecurityGroups.ps1
+.\CreateSecurityGroups_V3.ps1
 
 This will:
 
