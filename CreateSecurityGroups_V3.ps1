@@ -48,13 +48,13 @@ $ReportsPath = "$myDir\"
 
 
 # Paths to the input files
-$reportCsvPath = $ReportsPath + "report.csv"
+$reportCsvPath = $ReportsPath + "inputsecuritygroups.csv"
 $mappingsCsvPath = $ReportsPath + "mappings.csv"
 $preparedCsvPath = $ReportsPath + "Reports\To_be_Created_security_groups.csv"
 $newGroupsCsvPath = $ReportsPath + "Reports\created_new_groups.csv"
 
 
-# Step 1: Read report.csv and mappings.csv
+# Step 1: Read inputsecuritygroups.csv and mappings.csv
 $reportData = Import-Csv -Path $reportCsvPath
 $mappingsData = Import-Csv -Path $mappingsCsvPath
 
