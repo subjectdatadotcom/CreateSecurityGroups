@@ -20,7 +20,7 @@ This PowerShell script automates the provisioning and updating of **Azure AD Sec
 
 Place these CSVs in the root script directory:
 
-### `report.csv`
+### `inputsecuritygroups.csv`
 Contains the source group data to be migrated.
 
 | GroupName   | GroupType                | Owners                | Members               | OwnersCount | MembersCount |
