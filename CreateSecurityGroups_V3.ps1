@@ -281,7 +281,9 @@ foreach ($group in $preparedData) {
 
         $newGroupsData += New-Object PSObject -Property @{
             MembersCount  = $group.MembersCount
-            GroupGUID     = $newGroup.ObjectId
+            OLDGroupGUID  = "c:0t.c|tenant|" + $group.GroupGUID
+            GroupGUID     = "c:0t.c|tenant|" + $newGroup.ObjectId
+            OLDGroupName  = $group.GroupName
             Owners        = ($group.Owners -split ";" -join ";")
             GroupName     = $groupNameWithPrefix
             GroupType     = $newGroup.GroupType
@@ -365,8 +367,10 @@ foreach ($group in $preparedData) {
 
         $newGroupsData += New-Object PSObject -Property @{
             MembersCount  = $group.MembersCount
+            OLDGroupGUID  = "c:0t.c|tenant|" + $group.GroupGUID
             GroupGUID     = if ($existingGroupAAD) { $existingGroupAAD.ObjectId } else { $existingGroupMailEnabled.Guid }
             Owners        = ($group.Owners -split ";" -join ";")
+            OLDGroupName  = $group.GroupName
             GroupName     = $groupNameWithPrefix
             GroupType     = $group.GroupType
             Members       = ($group.Members -split ";" -join ";")
